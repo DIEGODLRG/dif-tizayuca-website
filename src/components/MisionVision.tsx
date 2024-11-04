@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import Image from 'next/image'
 
 const MisionVision: React.FC = () => {
   const controls = useAnimation()
@@ -60,9 +61,10 @@ const MisionVision: React.FC = () => {
           </motion.div>
           <motion.div variants={itemVariants} className="relative h-64 md:h-96">
             <div className="absolute inset-0 bg-pink-200 rounded-lg transform rotate-3 shadow-lg"></div>
-            <img
+            <Image
               src="/images/DIF-7.jpg"
               alt="Familia feliz en Tizayuca"
+              fill
               className="absolute inset-0 w-full h-full object-cover rounded-lg shadow-md transform -rotate-3 transition-transform hover:rotate-0 duration-300"
             />
           </motion.div>
@@ -76,9 +78,10 @@ const MisionVision: React.FC = () => {
         >
           <motion.div variants={itemVariants} className="relative h-64 md:h-96 order-2 md:order-1">
             <div className="absolute inset-0 bg-blue-200 rounded-lg transform -rotate-3 shadow-lg"></div>
-            <img
+            <Image
               src="/images/DIF 2.jpg"
               alt="Futuro próspero para Tizayuca"
+              fill
               className="absolute inset-0 w-full h-full object-cover rounded-lg shadow-md transform rotate-3 transition-transform hover:rotate-0 duration-300"
             />
           </motion.div>
