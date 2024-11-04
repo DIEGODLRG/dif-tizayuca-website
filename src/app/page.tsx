@@ -3,9 +3,10 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Search, Facebook, Instagram } from 'lucide-react'
+import { Search, Facebook, Instagram, Menu } from 'lucide-react'
 import TikTokIcon from '../components/TikTokIcon'
 import MisionVision from '../components/MisionVision'
+import StatisticsCounterComponent from '../components/StatisticsCounter'
 
 export default function HomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -45,14 +46,14 @@ export default function HomePage() {
         isHeaderVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
       }`}>
         {/* Black bar */}
-        <div className="bg-black h-12 flex items-center justify-end px-16">
+        <div className="bg-black h-12 flex items-center justify-end px-4 md:px-16">
           <div className="flex items-center space-x-4">
             <div className="relative">
               <button 
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
                 className="text-white hover:text-pink-200 transition-colors flex items-center"
               >
-                <span className="mr-2">Buscar</span>
+                <span className="mr-2 hidden sm:inline">Buscar</span>
                 <Search size={16} />
               </button>
               {isSearchOpen && (
@@ -103,7 +104,7 @@ export default function HomePage() {
         } h-20`}>
           <div className="container mx-auto px-4 h-full flex justify-between items-center">
             <div className="flex items-center space-x-4">
-              <div className="relative w-28 h-28 -mt-1">
+              <div className="relative w-20 h-20 md:w-28 md:h-28 -mt-1">
                 <Image 
                   src="/images/LOGO-DIF2024-03.png" 
                   alt="Logo DIF Tizayuca" 
@@ -117,15 +118,15 @@ export default function HomePage() {
               className="md:hidden bg-pink-700 text-white px-4 py-2 rounded-md"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              Menú
+              <Menu size={24} />
             </button>
-            <nav className="hidden md:flex items-center -mt-1">
-              <Link href="#" className="text-white hover:text-pink-200 transition-colors uppercase font-bold mr-[1.25rem]">INICIO</Link>
-              <Link href="#" className="text-white hover:text-pink-200 transition-colors uppercase font-bold mx-[1.25rem]">PROGRAMAS</Link>
-              <Link href="#" className="text-white hover:text-pink-200 transition-colors uppercase font-bold mx-[1.25rem]">NOSOTROS</Link>
-              <Link href="#" className="text-white hover:text-pink-200 transition-colors uppercase font-bold mx-[1.25rem]">EVENTOS</Link>
-              <Link href="#" className="text-white hover:text-pink-200 transition-colors uppercase font-bold mx-[1.25rem]">CONTACTO</Link>
-              <Link href="#" className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full transition-colors uppercase ml-[1.25rem]">
+            <nav className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row absolute md:relative top-full left-0 right-0 bg-pink-600 md:bg-transparent md:top-auto items-center -mt-1`}>
+              <Link href="#" className="text-white hover:text-pink-200 transition-colors uppercase font-bold py-2 md:py-0 md:mr-[1.25rem]">INICIO</Link>
+              <Link href="#" className="text-white hover:text-pink-200 transition-colors uppercase font-bold py-2 md:py-0 md:mx-[1.25rem]">PROGRAMAS</Link>
+              <Link href="#" className="text-white hover:text-pink-200 transition-colors uppercase font-bold py-2 md:py-0 md:mx-[1.25rem]">NOSOTROS</Link>
+              <Link href="#" className="text-white hover:text-pink-200 transition-colors uppercase font-bold py-2 md:py-0 md:mx-[1.25rem]">EVENTOS</Link>
+              <Link href="#" className="text-white hover:text-pink-200 transition-colors uppercase font-bold py-2 md:py-0 md:mx-[1.25rem]">CONTACTO</Link>
+              <Link href="#" className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full transition-colors uppercase md:ml-[1.25rem] mt-2 md:mt-0">
                 REPORTA Y MEJORA
               </Link>
             </nav>
@@ -148,7 +149,7 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-pink-600 bg-opacity-55"></div>
           </div>
           <div className="relative z-10 flex flex-col justify-center items-center min-h-screen pb-16">
-            <div className="relative w-[30rem] h-[30rem] mt-40">
+            <div className="relative w-[15rem] h-[15rem] md:w-[30rem] md:h-[30rem] mt-20 md:mt-40">
               <Image 
                 src="/images/LOGO-DIF2024-03.png" 
                 alt="Logo DIF Tizayuca" 
@@ -160,15 +161,15 @@ export default function HomePage() {
         </section>
 
         {/* Nosotros section */}
-        <section className="py-24 bg-white">
+        <section className="py-12 md:py-24 bg-white">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center justify-between md:space-x-8">
               <div className="md:w-1/2 mb-8 md:mb-0">
-                <h2 className="text-6xl font-bold text-center mb-8 text-pink-600">NOSOTROS</h2>
-                <p className="text-lg mb-4 text-right text-gray-800">
+                <h2 className="text-4xl md:text-6xl font-bold text-center mb-8 text-pink-600">NOSOTROS</h2>
+                <p className="text-base md:text-lg mb-4 text-right text-gray-800">
                   En el Sistema Municipal DIF Tizayuca, nos dedicamos a mejorar la calidad de vida de las familias de nuestra comunidad. Nuestro equipo está comprometido con brindar asistencia social, promover el desarrollo integral de la familia y fomentar la inclusión de todos los sectores de la sociedad.
                 </p>
-                <p className="text-lg text-right text-gray-800">
+                <p className="text-base md:text-lg text-right text-gray-800">
                   Trabajamos incansablemente para ofrecer programas y servicios que atienden las necesidades más apremiantes de nuestra población, siempre con un enfoque humano y cercano a la gente.
                 </p>
               </div>
@@ -178,7 +179,7 @@ export default function HomePage() {
                   alt="Equipo DIF Tizayuca"
                   width={600}
                   height={400}
-                  className="rounded-lg shadow-md"
+                  className="rounded-lg shadow-md w-full h-auto"
                 />
               </div>
             </div>
@@ -188,32 +189,32 @@ export default function HomePage() {
         <MisionVision />
 
         {/* Información y Transparencia section */}
-        <section className="py-24 bg-gray-100">
+        <section className="py-12 md:py-24 bg-gray-100">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <button className="bg-[#ff00f8] hover:bg-[#d600ce] text-white font-bold py-3 px-6 rounded-full transition-colors uppercase text-3xl w-[32rem] mx-auto flex items-center justify-center">
+              <button className="bg-[#ff00f8] hover:bg-[#d600ce] text-white font-bold py-3 px-6 rounded-full transition-colors uppercase text-xl md:text-3xl w-full md:w-[32rem] mx-auto flex items-center justify-center">
                 TRANSPARENCIA
               </button>
             </div>
             <div className="max-w-3xl mx-auto text-center mb-16">
-              <p className="text-2xl font-semibold mb-4">Siempre cerca de nuestra gente</p>
-              <p className="text-4xl font-bold mb-6 text-[#ff00f8]">EN TIZAYUCA, EL APOYO ES NUESTRA MISIÓN</p>
-              <p className="text-xl">
+              <p className="text-xl md:text-2xl font-semibold mb-4">Siempre cerca de nuestra gente</p>
+              <p className="text-2xl md:text-4xl font-bold mb-6 text-[#ff00f8]">EN TIZAYUCA, EL APOYO ES NUESTRA MISIÓN</p>
+              <p className="text-lg md:text-xl">
                 Día con día, trabajamos para ser un aliado confiable, brindando respaldo y servicio a cada persona de nuestra comunidad.
               </p>
             </div>
-            <StatisticsCounter resetTrigger={resetCounter} />
+            <StatisticsCounterComponent resetTrigger={resetCounter} />
           </div>
         </section>
 
         {/* Nuestros Servicios section */}
-        <section className="py-24 bg-white">
+        <section className="py-12 md:py-24 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">Nuestros Servicios</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">Nuestros Servicios</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {['Asistencia Social', 'Atención a Adultos Mayores', 'Apoyo a la Niñez'].map((service, index) => (
                 <div key={index} className="bg-gray-100 rounded-lg p-6 shadow-md">
-                  <h3 className="text-xl font-semibold mb-4">{service}</h3>
+                  <h3 className="text-lg md:text-xl font-semibold mb-4">{service}</h3>
                   <p className="mb-4">Descripción breve del servicio y cómo beneficia a la comunidad de Tizayuca.</p>
                   <button className="text-pink-600 font-semibold hover:text-pink-800 transition-colors">Leer más</button>
                 </div>
@@ -263,7 +264,7 @@ function StatisticsCounter({ resetTrigger }: { resetTrigger: boolean }) {
   ])
 
   const counterRef = useRef<HTMLDivElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
+  const  [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -309,7 +310,7 @@ function StatisticsCounter({ resetTrigger }: { resetTrigger: boolean }) {
     }
 
     if (isVisible) {
-      animationFrameId =   requestAnimationFrame(animate)
+      animationFrameId = requestAnimationFrame(animate)
     }
 
     return () => {
@@ -324,13 +325,13 @@ function StatisticsCounter({ resetTrigger }: { resetTrigger: boolean }) {
   }, [resetTrigger])
 
   return (
-    <div ref={counterRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div ref={counterRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       {counters.map((counter) => (
         <div key={counter.id} className="bg-white rounded-lg p-6 shadow-md text-center">
-          <div className="text-4xl font-bold text-pink-600 mb-2">
+          <div className="text-2xl md:text-4xl font-bold text-pink-600 mb-2">
             +{Math.round(counter.value).toLocaleString('es-MX')}
           </div>
-          <p className="text-sm">{counter.label}</p>
+          <p className="text-xs md:text-sm">{counter.label}</p>
         </div>
       ))}
     </div>
